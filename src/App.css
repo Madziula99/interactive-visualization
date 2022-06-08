@@ -1,0 +1,20 @@
+.center-header {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-cursor {
+    cursor: pointer;
+}
+
+.card.card-item {
+    background-color: #191414;
+    cursor: "pointer";
+    margin: auto;
+}
+
+.card-image {
+    width: 5rem;
+    height: 10rem;
+    object-fit: cover;
+}
