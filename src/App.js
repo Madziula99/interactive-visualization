@@ -14,7 +14,7 @@ function randomNumberInRange(min, max) {
 
 function App() {
   const CLIENT_ID = '9429b93612cc4b26a9de54368c717993'
-  const REDIRECT_URI = 'http://localhost:3000'
+  const REDIRECT_URI = 'https://main--enchanting-panda-9de580.netlify.app'
   const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
   const RESPONSE_TYPE = 'token'
 
