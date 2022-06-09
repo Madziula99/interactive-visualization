@@ -65,6 +65,7 @@ function App() {
       }
     })
 
+    console.log(Number(data.tracks.items[0].duration_ms))
     setSongs(data.tracks.items)
     return false
   }

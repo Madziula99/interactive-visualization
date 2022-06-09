@@ -4,6 +4,7 @@ import './SongCharts.css';
 
 import { select, axisBottom, scaleLinear, axisLeft, brushX } from 'd3';
 import usePrevious from "./usePrevious";
+import { hsl } from "d3";
 
 const useResizeObserver = ref => {
   const [dimensions, setDimensions] = useState(null);
@@ -32,6 +33,13 @@ function SongsChart({ songs, children }) {
 
     useEffect( () => {
       const svg = select(svgRef.current);
+
+      var artists = [];
+      songs.map(song =>
+        artists.push(song.artists[0].name)
+      )
+      var nonRepeat = new Set(artists);
+      artists = [...nonRepeat];
 
       var currentYears = [];
 
@@ -92,18 +100,16 @@ function SongsChart({ songs, children }) {
         .selectAll('circle')
         .data(songs)
         .join('circle')
-        .attr('r', song =>
-          (Number(song.album.release_date.slice(0, 4)) >= selection[0])
-          && (Number(song.album.release_date.slice(0, 4)) <= selection[1])
-          ? 3
-          : 2
-        )
+        .attr('r', song => Number(song.duration_ms)/30000)
         .attr('stroke', song =>
-          (Number(song.album.release_date.slice(0, 4)) >= selection[0])
-          && (Number(song.album.release_date.slice(0, 4)) <= selection[1])
-          ? 'red'
-          : '#191414'
+          hsl(artists.indexOf(song.artists[0].name)/artists.length*100, 80, 50)
         )
+        // .attr('stroke', song =>
+        //   (Number(song.album.release_date.slice(0, 4)) >= selection[0])
+        //   && (Number(song.album.release_date.slice(0, 4)) <= selection[1])
+        //   ? 'red'
+        //   : '#191414'
+        // )
         .attr('cx', song => xScale(Number(song.album.release_date.slice(0, 4))))
         .attr('cy', song => yScale(song.popularity))
         .attr('fill', '#191414')
