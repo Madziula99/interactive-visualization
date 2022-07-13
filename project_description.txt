@@ -1,0 +1,12 @@
+Project was created as part of Visualization and Data Reporting subject
+The topic of the task was interactive visualization
+
+My project uses Spotify API to get data about songs related to typed phrase.
+Gathered information is displayed in form of list of songs titles with the album cover
+and two charts created with tools of the D3 library.
+
+The project is not in its final form it still will be updated.
+
+BUGS:
+1. First attempt of searching for the phrase does not trigger list and chart appearance.
+2. The range for second chart is not dynamically assigned.
